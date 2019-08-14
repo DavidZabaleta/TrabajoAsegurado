@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>
+        Crud persona
+    </title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">CRUD</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{/crud/index}">Home</a>
+                <a class="nav-item nav-link" th:href="@{/crud/listar}">Listar</a>
+                <a class="nav-item nav-link active"  th:href="@{/crud/buscar}">Buscar</a>
+            </div>
+        </div>
+    </nav>
+    <div class="card">
+    <div class="card-header">
+            <form th:objetc="{id}" th:href="@{/crud/buscar/encontrar?id=__${id}__}" method="post">
+       <input type="text" class="form-control" name="usuario" >
+       <p></p>
+        <button type="submit" class="btn btn-primary">Buscar provedor</button>
+       </form>
+        </div>
+       
+            <blockquote class="blockquote mb-0">
+            <div th:if="${personas == null or personas.isEmpty()}">
+				<div class="alert alert-warning" role="alert">
+					  No se tienen personas registradas.
+				</div>
+            
+            </div>
+            
+
+            <div th:if="${personas != null and !personas.isEmpty()}">
+                <p>Personas</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+<!--                             <th scope="col">Documento</th> -->
+                            <th scope="col">Nombre</th>
+                            <th scope="col">fecha de registro</th>
+                             <th scope="col">direccion</th> 
+                            <th scope="col">Teléfono</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="persona: ${personas}">
+                            <th scope="row" th:text="${persona.id}" ></th>
+                            <td th:text="${persona.nombres}"></td>
+                            <td th:text="${persona.fechaRegistro}"></td>
+                            <td th:text="${persona.direccion}"></td>
+                            <td th:text="${persona.telefono}"></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+            </blockquote>
+        </div>
+    </div>
+
+
+
+
+    <script src="../../js/jquery-3.3.1.slim.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+</body>
+
+</html>
