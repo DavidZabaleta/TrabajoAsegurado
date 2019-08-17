@@ -17,11 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ventas.Entity.ProvedorEntity;
 import com.ventas.service.ProvedorService;
 
-
-
-
-
-
 @RestController("ProvedorWS")
 @RequestMapping("/provedor-service")
 public class ProvedorWS {
@@ -45,7 +40,7 @@ public class ProvedorWS {
 		provedorService.save(provedor);
 	}
 	
-	@GetMapping("/persona/{id}")
+	@GetMapping("/provedor/{id}")
 	public ProvedorEntity findById(@PathVariable long id) {
 		return  provedorService.FindById(id);
 	}

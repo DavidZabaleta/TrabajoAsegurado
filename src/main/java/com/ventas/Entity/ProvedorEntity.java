@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name ="proveedor")
+@Table(name ="provedor")
 public class ProvedorEntity implements Serializable{
 	
 	/**
@@ -32,10 +32,10 @@ public class ProvedorEntity implements Serializable{
 	
 	@NotEmpty(message="El campo fecha registro no puede ser vacio.")
 	@Column(name="fechaRegistro", nullable = false, length = 45)
-	private Date fechaRegistro;
+	private String fechaRegistro;
 	
 	@NotEmpty(message="El campo telefono no puede ser vacio.")
-	@Size(min=7, max=7, message="Tamaño del campo telefono no es válido.")
+	@Size(min=6, max=8, message="Tamaño del campo telefono no es válido.")
 	@Column(name="telefono", nullable = false, length = 8)
 	private String telefono;
 	
@@ -56,7 +56,7 @@ public class ProvedorEntity implements Serializable{
 		return nombre;
 	}
 
-	public Date getFechaRegistro() {
+	public String getFechaRegistro() {
 		return fechaRegistro;
 	}
 
@@ -76,7 +76,7 @@ public class ProvedorEntity implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(String fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 
